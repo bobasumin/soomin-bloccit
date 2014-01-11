@@ -21,6 +21,7 @@
       <%= f.text_area :body, rows: 8 %>
     </div>
   <% end %>
+  <%= image_tag(@post.image)%>
   <div class="control-group">
     <div class="controls">
       <%= f.submit "Save", class: 'btn' %>
