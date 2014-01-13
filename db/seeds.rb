@@ -18,7 +18,7 @@ rand(4..10).times do
   u.skip_confirmation!
   u.save
 
-  rand(5..12).times do
+  rand(10..15).times do
     topic = topics.first # getting the first topic here
     p = u.posts.create(
       topic: topic,
