@@ -16,4 +16,19 @@ class CommentsController < ApplicationController
       render 'posts/show'
     end
   end
+
+  def destroy
+    @topic = Topic.find(params[:topic_id])
+    @post = @topic.posts.find(params[:post_id])
+    @comments = @post.comments.find(params[:id])
+
+    authorize! :destroy, @comment, message: "You need to own this comment to do it."
+    if @comment.destroy
+      flash[:notice] = "Comment was deleted."
+      redirect_to [@topic, @post]
+    else
+      flash[:error] = "There was an error deleting the comment."
+      render [@topic, @post]
+    end
+  end
 end
