@@ -13,6 +13,6 @@
   </div>
 
   <div class="span8">
-    <%= render 'form' %>
+    <%= render partial: 'form', locals: { topic: @topic, post: @post } %>
   </div>
 </div>

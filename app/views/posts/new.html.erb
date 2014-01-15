@@ -5,14 +5,14 @@
     <p>Guidelines for new posts:</p>
     <ul>
       <li>Make sure content is appropriate.</li>
-      <li>Blah blah blah</li>
-      <li>Blah blah blah</li>
-      <li>Blah blah blah</li>
+      <li>Make sure the title has 5+ characters.</li>
+      <li>Make sure the body has 20+ characters.</li>
+      <li>Make sure that you have selected a topic.</li>
     </ul>
   </div>
 
   <div class="span8">
-    <%= render 'form' %>
+    <%= render partial: 'form', locals: { topic: @topic, post: @post } %>
   </div>
 </div>
   
