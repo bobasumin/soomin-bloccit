@@ -1,8 +1,10 @@
 class PostsController < ApplicationController
 
   def show
-    @post = Post.find(params[:id])
     @topic = Topic.find(params[:topic_id])
+    @post = Post.find(params[:id])
+    @comments = @post.comments
+    @comment = Comment.new
   end
 
   def new
@@ -20,6 +22,7 @@ class PostsController < ApplicationController
   def create
     @topic = Topic.find(params[:topic_id])
     @post = current_user.posts.build(params[:post])
+
     @post.topic = @topic
 
     authorize! :create, @post, message: "You need to be signed up to do that."
