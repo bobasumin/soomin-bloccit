@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
   def destroy
     @topic = Topic.find(params[:topic_id])
     @post = @topic.posts.find(params[:post_id])
-    @comments = @post.comments.find(params[:id])
+    @comment = @post.comments.find(params[:id])
 
     authorize! :destroy, @comment, message: "You need to own this comment to do it."
     if @comment.destroy
