@@ -26,21 +26,21 @@ rand(4..10).times do
       body: Faker::Lorem.paragraphs(rand(1..4)).join("\n"))
     # set the created_at to a time within the past year
     p.update_attribute(:created_at, Time.now - rand(600..31536000))
-
     p.update_rank
-    topics.rotate! #this line to move the first topic to the last, so that posts get assigned to different topics.
 
-    post_count = Post.count
-    User.all.each do |user|
-      rand(30..50).times do
-        p = Post.find(rand(1..post_count))
-        c = user.comments.create(
-          body: Faker::Lorem.paragraphs(rand(1..2)).join("\n"),
-          post: p)
-        c.update_attribute(:created_at, Time.now - rand(600..31536000))
-      end
-    end
+    topics.rotate! #this line to move the first topic to the last, so that posts get assigned to different topics.
   end
+end
+
+post_count = Post.count
+User.all.each do |user|
+    rand(30..50).times do
+      p = Post.find(rand(1..post_count))
+      c = user.comments.create(
+        body: Faker::Lorem.paragraphs(rand(1..2)).join("\n"),
+        post: p)
+      c.update_attribute(:created_at, Time.now - rand(600..31536000))
+    end
 end
 
 u = User.new(
