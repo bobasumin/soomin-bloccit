@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Vote do 
+  
   describe '#up_vote?' do
     it "returns true for an up vote" do
       v = Vote.new(value: 1)
