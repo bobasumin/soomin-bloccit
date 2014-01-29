@@ -12,8 +12,11 @@
     <p><%= markdown @post.body %></p>
     
     <hr/>
-    <h2 class='js-comment-count'><%= @comments.count %> Comments</h2>
-    <%= render partial: 'comments/comment', collection: @comments %>
+
+    <h2 class='js-comments-count'><%= @comments.count %> Comments</h2>
+    <div class='js-comments'>
+      <%= render partial: 'comments/comment', collection: @comments %>
+    </div>
 
     <% if can? :create, Comment %>
       <hr/>
@@ -26,6 +29,7 @@
       </div>
     <% end %>
   </div>
+  
   <div class="span4">
     <% if can? :edit, @post %>
       <%= link_to "Edit Post", edit_topic_post_path(@topic, @post), class: 'btn btn-large btn-block' %>
