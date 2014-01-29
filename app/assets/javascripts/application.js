@@ -16,6 +16,13 @@
 //= require_tree .
 
 $(document).ready(function() {
+  $("<p class='enjoy-message'><strong>Hope you enjoy Bloccit :)</strong></p>").appendTo(".user-info");
+
+  $(".enjoy-message").click(function () {
+    $(".enjoy-message").fadeOut("slow", function() {
+     });
+  });
+
   $(".js-show-hide").click(function () {
     var selector = "." + $(this).attr('data-selector');
     if ($(selector).is(":visible")) {
